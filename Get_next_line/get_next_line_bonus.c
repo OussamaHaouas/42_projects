@@ -6,7 +6,7 @@
 /*   By: ouhaouas <ouhaouas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 17:03:22 by ouhaouas          #+#    #+#             */
-/*   Updated: 2024/12/25 09:09:44 by ouhaouas         ###   ########.fr       */
+/*   Updated: 2025/01/28 21:46:09 by ouhaouas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ char	*get_next_line(int fd)
 	char		*buffer;
 	char		*line;
 
+	if (fd > OPEN_MAX)
+		return (free(capacitor[fd]), capacitor[fd] = NULL, NULL);
 	if (BUFFER_SIZE > 2147483647 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (free(capacitor[fd]), capacitor[fd] = NULL, NULL);
 	buffer = malloc((size_t)BUFFER_SIZE + 1);
